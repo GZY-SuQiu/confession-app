@@ -9,9 +9,6 @@
    - 「不愿意」→ 按钮会逃跑！文案逐句升级（你确定？→ 再想想？→ …→ 它跑不动了），4 次后「不愿意」残废变灰，只能点愿意
 3. 竖屏、全屏渐变背景
 
-## 编译
-本机（Minis 沙箱）无法编译 APK（JVM 跑不起来），出包走 GitHub Actions：
-
 ```
 push 到 GitHub → Actions 自动跑 assembleRelease → 下载 artifact 里的 APK
 ```
