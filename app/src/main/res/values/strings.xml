@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">心动表白</string>
+    <string name="setup_title">表白神器</string>
+    <string name="setup_sub">填写下面两项，见证你们的爱情 💕</string>
+    <string name="hint_name">TA 的名字</string>
+    <string name="hint_msg">想说的话（可留空，默认经典款）</string>
+    <string name="btn_start">开 始 表 白 ♥</string>
+    <string name="btn_yes">愿意 ♥</string>
+    <string name="btn_no">不愿意</string>
+</resources>
