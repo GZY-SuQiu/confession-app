@@ -10,10 +10,5 @@
 3. 竖屏、全屏渐变背景
 
 ```
-push 到 GitHub → Actions 自动跑 assembleRelease → 下载 artifact 里的 APK
-```
-
-或在任意有 Android Studio / gradle 的电脑上：`gradle assembleRelease`
-
 ## 安装
 APK 直接传到手机 → 文件管理器打开 → 允许「安装未知应用」即可安装（未签名证书自签，首次安装需点「仍要安装」）。
