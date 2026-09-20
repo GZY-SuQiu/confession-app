@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         tv.setPadding(48, 48, 48, 48);
         tv.setGravity(android.view.Gravity.TOP);
         tv.setTypeface(android.graphics.Typeface.MONOSPACE);
-        root.addView(tv, new FrameLayout.LayoutParams(
+        ((FrameLayout) root).addView(tv, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
     }
 
