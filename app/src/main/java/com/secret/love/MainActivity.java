@@ -57,7 +57,29 @@ public class MainActivity extends Activity {
         btnYes.setOnClickListener(v -> accept());
         btnNo.setOnClickListener(v -> dodge());
 
+        android.os.Handler main = new android.os.Handler(android.os.Looper.getMainLooper());
+        Thread.setDefaultUncaughtExceptionHandler((t, e) -> main.post(() -> showCrash(e)));
+
         startHeartPulse();
+    }
+
+    private void showCrash(Throwable e) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(e.getClass().getName()).append(": ").append(e.getMessage()).append("\n");
+        for (StackTraceElement el : e.getStackTrace()) {
+            sb.append("  at ").append(el).append("\n");
+            if (sb.length() > 1200) break;
+        }
+        TextView tv = new TextView(this);
+        tv.setText(sb.toString());
+        tv.setBackgroundColor(0xE0100510);
+        tv.setTextColor(0xFFFFFFFF);
+        tv.setTextSize(10f);
+        tv.setPadding(48, 48, 48, 48);
+        tv.setGravity(android.view.Gravity.TOP);
+        tv.setTypeface(android.graphics.Typeface.MONOSPACE);
+        root.addView(tv, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
     }
 
     private void startConfession() {
