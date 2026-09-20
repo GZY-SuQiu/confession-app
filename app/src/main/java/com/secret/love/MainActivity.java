@@ -76,14 +76,18 @@ public class MainActivity extends Activity {
 
     private void startHeartPulse() {
         if (pulse != null) pulse.cancel();
+        android.animation.ObjectAnimator ax =
+                android.animation.ObjectAnimator.ofFloat(heartBig, "scaleX", 1f, 1.25f);
+        android.animation.ObjectAnimator ay =
+                android.animation.ObjectAnimator.ofFloat(heartBig, "scaleY", 1f, 1.25f);
+        for (android.animation.ValueAnimator a : new android.animation.ValueAnimator[]{ax, ay}) {
+            a.setDuration(700);
+            a.setRepeatCount(android.animation.ValueAnimator.INFINITE);
+            a.setRepeatMode(android.animation.ValueAnimator.REVERSE);
+            a.setInterpolator(new LinearInterpolator());
+        }
         pulse = new android.animation.AnimatorSet();
-        pulse.playTogether(
-                android.animation.ObjectAnimator.ofFloat(heartBig, "scaleX", 1f, 1.25f),
-                android.animation.ObjectAnimator.ofFloat(heartBig, "scaleY", 1f, 1.25f));
-        pulse.setDuration(700);
-        pulse.setRepeatCount(android.animation.ValueAnimator.INFINITE);
-        pulse.setRepeatMode(android.animation.ValueAnimator.REVERSE);
-        pulse.setInterpolator(new LinearInterpolator());
+        pulse.playTogether(ax, ay);
         pulse.start();
     }
 
@@ -110,7 +114,7 @@ public class MainActivity extends Activity {
     }
 
     private void animateHeartBurst() {
-        heartBig.animate().cancelAnimations();
+        heartBig.animate().cancel();
         heartBig.setScaleX(1f);
         heartBig.setScaleY(1f);
         heartBig.animate()
@@ -137,7 +141,7 @@ public class MainActivity extends Activity {
                 (FrameLayout.LayoutParams) btnNo.getLayoutParams();
         lp.leftMargin = targetX;
         lp.topMargin = targetY;
-        lp.gravity = FrameLayout.LayoutParams.TOP | FrameLayout.LayoutParams.START;
+        lp.gravity = android.view.Gravity.TOP | android.view.Gravity.START;
         btnNo.setLayoutParams(lp);
 
         btnNo.animate()
@@ -165,7 +169,7 @@ public class MainActivity extends Activity {
     private void vibrate(long ms) {
         if (Build.VERSION.SDK_INT >= 26) {
             Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-            if (vib != null) vib.vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.EFFECT_HEAVY_TICK));
+            if (vib != null) vib.vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.EFFECT_HEAVY_CLICK));
         }
     }
 }
