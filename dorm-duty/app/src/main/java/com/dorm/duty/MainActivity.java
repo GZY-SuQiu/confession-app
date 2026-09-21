@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
     private CalendarSync calSync;
 
     private LinearLayout root;
-    private View dayListSection, memberSection, settingsSection;
+    private LinearLayout dayListSection, memberSection, settingsSection;
     private TextView statusView;
 
     private static final DateTimeFormatter D_FMT = DateTimeFormatter.ofPattern("M月d日 EEE");
@@ -281,9 +281,9 @@ public class MainActivity extends Activity {
                     .setView(et)
                     .setPositiveButton("保存", (d, w) -> {
                         String s = et.getText().toString().trim();
-                        LocalDate d = parseDate(s);
-                        if (d != null) {
-                            store.setStartDate(d);
+                        LocalDate dd = parseDate(s);
+                        if (dd != null) {
+                            store.setStartDate(dd);
                             renderAll();
                         }
                     })
