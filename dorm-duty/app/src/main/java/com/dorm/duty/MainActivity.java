@@ -356,7 +356,7 @@ public class MainActivity extends Activity {
         tv.setPadding(dp(12), dp(8), dp(12), dp(8));
         GradientDrawable bg = new GradientDrawable();
         bg.setColor(Color.parseColor(color));
-        bg.cornerRadius(dp(16)*1f);
+        bg.setCornerRadius(dp(16)*1f);
         tv.setBackground(bg);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
